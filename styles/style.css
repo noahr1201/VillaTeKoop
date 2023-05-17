@@ -75,21 +75,3 @@ html, body{
   .bd-mode-toggle {
 	z-index: 1500;
   }
-
-.carousel {
-	scale: .75;
-	top: -100px;
-}
-
-.carousel-indicators li {
-  background-color: #ffffff;
-  border: none;
-  border-radius: 50%;
-  width: 12px;
-  height: 12px;
-  margin: 0 4px;
-}
-
-.carousel-indicators .active {
-  background-color: #ff0000;
-}
