@@ -55,7 +55,7 @@
 
   <main>
    <div class="container text-center">
-      <a href="../index.html"><img src="../Media/idealista.png" class="img-fluid rounded" width="20%"></a>
+      <a href="../index.html"><img src="../media/idealista.png" class="img-fluid rounded" width="20%"></a>
     </div>
     <p class="text-center" style="padding: 30px; font-size: 120%;"></p>
     <div class="container">
