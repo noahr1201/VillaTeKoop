@@ -19,10 +19,10 @@
     echo "<div class='alert alert-danger' role='alert'>Error connecting to the database: " . $e->getMessage() . "</div>";
   }
 
-  error_reporting(E_ALL);
-  ini_set('display_errors', 'On');
+  $id = isset($_GET['id']) ? $_GET['id'] : 1; // Default ID is set to 1 if no ID is provided
 
-  $stmt = $dbh->prepare("SELECT * FROM Villa WHERE id = 1");
+  $stmt = $dbh->prepare("SELECT * FROM Villa WHERE id = :id");
+  $stmt->bindParam(':id', $id);
 
   if ($stmt->execute()) {
     $villa = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -31,14 +31,14 @@
   }
   ?>
 
-  <nav class="navbar navbar-expand navbar-light" style="background-color: rgb(81, 213, 92);" aria-label="Second navbar example">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Villa Te Koop</a>
+  <nav class="navbar navbar-expand navbar-light bg-success" aria-label="Second navbar example">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">Villa Te Koop</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarsExample02">
-        <ul class="navbar-nav me-auto">
+        <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
           </li>
@@ -54,30 +54,48 @@
   </nav>
 
   <main>
-    <div class="container text-center">
-      <img src="../Media/idealista.png" class="img-fluid rounded" width="20%">
+   <div class="container text-center">
+      <a href="../index.html"><img src="../Media/idealista.png" class="img-fluid rounded" width="20%"></a>
     </div>
-    <h2 class="lead text-center">Villa Te Koop</h2>
     <p class="text-center" style="padding: 30px; font-size: 120%;"></p>
     <div class="container">
       <div class="row">
-        <div class="col">
-          <strong>Adres:</strong> <?php echo $villa['adres']; ?>
+        <div class="col-md-6">
+          <div class="border-0 mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><b>Adres</b></h5>
+              <p class="card-text"><?php echo $villa['adres']; ?></p>
+            </div>
+          </div>
+          <div class="border-0 mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><b>Plaatsnaam</b></h5>
+              <p class="card-text"><?php echo $villa['plaatsnaam']; ?></p>
+            </div>
+          </div>
+          <div class="border-0 mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><b>Postcode</b></h5>
+              <p class="card-text"><?php echo $villa['postcode']; ?></p>
+            </div>
+          </div>
+          <div class="border-0 mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><b>Beschrijving</b></h5>
+              <p class="card-text"><?php echo $villa['beschrijving']; ?></p>
+            </div>
+          </div>
+          <div class="border-0 mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><b>Bod</b></h5>
+              <p class="card-text">&euro; <?php echo number_format($villa['bod']); ?> ,-</p>
+            </div>
+          </div>
         </div>
-        <div class="col">
-          <strong>Plaatsnaam:</strong> <?php echo $villa['plaatsnaam']; ?>
-        </div>
-        <div class="col">
-          <strong>Postcode:</strong> <?php echo $villa['postcode']; ?>
-        </div>
-        <div class="col">
-          <strong>Beschrijving:</strong> <?php echo $villa['beschrijving']; ?>
-        </div>
-        <div class="col">
-          <strong>Bod:</strong> <?php echo $villa['bod']; ?>
-        </div>
-        <div class="col">
-          <img src="<?php echo $villa['foto']; ?>" class="img-fluid rounded" width="60%">
+        <div class="col-md-6">
+          <div class="border-0 mb-4">
+            <img src="<?php echo $villa['foto']; ?>" class="card-img-top" alt="Villa Image">
+          </div>
         </div>
       </div>
     </div>
@@ -85,7 +103,7 @@
 
   <div class="container">
     <footer class="py-1 my-2 fixed-bottom text-center">
-      <p class="mb-2 text-body-secondary text-black-50">2023 &copy; idealista</p>
+      <p class="mb-2 text-black-50">&copy; 2023 idealista</p>
     </footer>
   </div>
 
