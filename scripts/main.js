@@ -44,7 +44,7 @@ $(document).ready(function () {
 
 					$.ajax({
 						type: 'POST',
-						url: 'php/send-email.php',
+						url: 'php/submit-form.php',
 						data: $(form).serialize(),
 						beforeSend: function () {
 							submitButton.css('display', 'block').text(waitText);

@@ -152,6 +152,6 @@ label.error {
   color: #000; }
 
 .required-label::after {
-  content: "*";
+  content: " *";
   color: red;
 }
