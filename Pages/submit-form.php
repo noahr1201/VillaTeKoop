@@ -18,7 +18,7 @@ try {
         }
 
         if (isset($error)) {
-            header("Location: ../index.html?error=" . urlencode($error));
+            header("Location: contact.html?error=" . urlencode($error));
             exit;
         }
 

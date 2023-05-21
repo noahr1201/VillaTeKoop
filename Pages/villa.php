@@ -33,7 +33,9 @@
 
   <nav class="navbar navbar-expand navbar-light bg-success" aria-label="Second navbar example">
     <div class="container">
-      <a class="navbar-brand" href="../index.html">Villa Te Koop</a>
+      <a class="navbar-brand" href="../index.html">
+        <img src="../media/idealista.png" class="img-fluid rounded" width="20%">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -43,10 +45,7 @@
             <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Villa's</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link" href="#">Contact</a>
           </li>
         </ul>
       </div>
@@ -54,9 +53,6 @@
   </nav>
 
   <main>
-   <div class="container text-center">
-      <a href="../index.html"><img src="../media/idealista.png" class="img-fluid rounded" width="20%"></a>
-    </div>
     <p class="text-center" style="padding: 30px; font-size: 120%;"></p>
     <div class="container">
       <div class="row">

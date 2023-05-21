@@ -10,33 +10,29 @@
     <link rel="stylesheet" href="../styles/contact.css">
 </head>
 <body onload="displayErrorMessage()">
-    <nav class="navbar navbar-expand navbar-light" style="background-color: rgb(81, 213, 92);" aria-label="Second navbar example">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html">Villa Te Koop</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsExample02">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./villa.php">Villa's</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
+    <nav class="navbar navbar-expand navbar-light bg-success" aria-label="Second navbar example">
+        <div class="container">
+        <a class="navbar-brand" href="../index.html">
+            <img src="../media/idealista.png" class="img-fluid rounded" width="20%">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExample02">
+            <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            </ul>
+        </div>
         </div>
     </nav>
-    <div id="error-message" style="display: none; color: red;"></div>
+    <div id="error-message" class="alert alert-danger" style="display: none;"></div>
     <main>
-        <div class="images text-center" style="margin: 20px;">
-            <img src="../media/idealista.png" class="img-fluid rounded" width="20%" alt="Idealista Logo">
-        </div>
-        <h2 class="lead text-center">Villa Te Koop</h2>
+        <h2 class="lead text-center mt-5">Villa Te Koop</h2>
         <h1 class="lead text-center">Neem contact met ons op</h1>
         <p class="text-center">Heb je een vraag of wil je iets vertellen?</p>
         <div class="content">
@@ -49,22 +45,22 @@
                                 <div class="row">
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="name" class="col-form-label required-label">Naam</label>
-                                        <input type="text" class="form-control" name="name" id="name" placeholder="Your name" required>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="John Doe" required>
                                     </div>
                                     <div class="col-md-6 form-group mb-3">
                                         <label for="email" class="col-form-label required-label">Email</label>
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Your email" required>
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="example@example.com" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 form-group mb-3">
                                         <label for="message" class="col-form-label required-label">Bericht</label>
-                                        <textarea class="form-control" name="message" id="message" cols="30" rows="4" placeholder="Write your message" required></textarea>
+                                        <textarea class="form-control" name="message" id="message" cols="30" rows="4" placeholder="Hallo ..." required></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12 form-group">
-                                        <input type="submit" value="Send Message" class="btn btn-primary rounded-0 py-2 px-4">
+                                    <div class="col-md-12 form-group m-3">
+                                        <input type="submit" value="Verstuur" class="btn btn-success rounded-0 py-2 px-4">
                                         <span class="submitting"></span>
                                     </div>
                                 </div>
