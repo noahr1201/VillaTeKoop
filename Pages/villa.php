@@ -10,31 +10,33 @@
 </head>
 <body>
   <?php
-  include_once '../db_config.php';
+  include_once '../config/db_config.php';
 
   try {
-    $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
-    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   } catch (PDOException $e) {
-    echo "<div class='alert alert-danger' role='alert'>Error connecting to the database: " . $e->getMessage() . "</div>";
+      echo "<div class='alert alert-danger' role='alert'>Error connecting to the database: " . $e->getMessage() . "</div>";
+      exit(); // Terminate script execution after displaying the error message
   }
 
   $id = isset($_GET['id']) ? $_GET['id'] : 1; // Default ID is set to 1 if no ID is provided
 
   $stmt = $dbh->prepare("SELECT * FROM Villa WHERE id = :id");
-  $stmt->bindParam(':id', $id);
+  $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
   if ($stmt->execute()) {
-    $villa = $stmt->fetch(PDO::FETCH_ASSOC);
+      $villa = $stmt->fetch(PDO::FETCH_ASSOC);
   } else {
-    echo "<div class='alert alert-danger' role='alert'>Error executing the query.</div>";
+      echo "<div class='alert alert-danger' role='alert'>Error executing the query.</div>";
+      exit(); // Terminate script execution after displaying the error message
   }
   ?>
 
   <nav class="navbar navbar-expand navbar-light bg-success" aria-label="Second navbar example">
     <div class="container">
       <a class="navbar-brand" href="../index.html">
-        <img src="../media/idealista.png" class="img-fluid rounded" width="20%">
+        <img src="../assets/idealista.png" class="img-fluid rounded" width="20%">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -52,8 +54,10 @@
     </div>
   </nav>
 
+  <div id="error-message" class="alert alert-danger" style="display: none;"></div>
+
   <main>
-    <p class="text-center" style="padding: 30px; font-size: 120%;"></p>
+    <p class="text-center" style="padding: 20px; font-size: 120%;"></p>
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -92,17 +96,36 @@
           <div class="border-0 mb-4">
             <img src="<?php echo $villa['foto']; ?>" class="card-img-top" alt="Villa Image">
           </div>
+          <div class="container">
+            <h4>Plaats Uw Bod</h4>
+            <form method="post" action="bid-form.php">
+              <div class="form-group">
+                  <label for="volledigeNaam">Volledige Naam</label>
+                  <input type="text" class="form-control" id="volledigeNaam" name="volledigeNaam" placeholder="Voer uw volledige naam in" required>
+              </div>
+              <div class="form-group">
+                  <label for="email">E-mailadres</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Voer uw e-mailadres in" required>
+              </div>
+              <div class="form-group">
+                  <label for="bodBedrag">Bodbedrag (in euro's)</label>
+                  <input type="number" class="form-control" id="bodBedrag" name="bodBedrag" min="1000000" step="100000" placeholder="Voer bodbedrag in" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Bod Indienen</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </main>
 
-  <div class="container">
+  <!-- <div class="container">
     <footer class="py-1 my-2 fixed-bottom text-center">
       <p class="mb-2 text-black-50">&copy; 2023 idealista</p>
     </footer>
-  </div>
+  </div> -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+  <script src="../scripts/errorMessage.js"></script>
 </body>
 </html>
