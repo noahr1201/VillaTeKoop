@@ -38,6 +38,14 @@
                     <p class="form-control-static">{{name}}</p>
                 </div>
                 <div class="form-group">
+                    <label for="name"><b>Adres:</b></label>
+                    <p class="form-control-static">{{adress}}</p>
+                </div>
+                <div class="form-group">
+                    <label for="name"><b>telefoonnummer:</b></label>
+                    <p class="form-control-static">{{phone}}</p>
+                </div>
+                <div class="form-group">
                     <label for="email"><b>E-mail:</b></label>
                     <p class="form-control-static">{{email}}</p>
                 </div>

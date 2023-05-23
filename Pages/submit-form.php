@@ -1,14 +1,16 @@
 <?php
-include_once '../db_config.php';
+include_once '../config/db_config.php';
 
 try {
     $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $name = isset($_POST['name']) ? htmlspecialchars($_POST['name']) : '';
+        $name = isset($_POST['naam']) ? htmlspecialchars($_POST['naam']) : '';
+        $adress = isset($_POST['adres']) ? htmlspecialchars($_POST['adres']) : '';
+        $phone = isset($_POST['telefoon']) ? htmlspecialchars($_POST['telefoon']) : '';
         $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
-        $message = isset($_POST['message']) ? htmlspecialchars($_POST['message']) : '';
+        $message = isset($_POST['vraag']) ? htmlspecialchars($_POST['vraag']) : '';
 
         // Form validation
         if (empty($name) || empty($email) || empty($message)) {
@@ -41,6 +43,8 @@ try {
         $submissionBody = file_get_contents('../templates/submission.php');
 
         $submissionBody = str_replace('{{name}}', $name, $submissionBody);
+        $submissionBody = str_replace('{{adress}}', $adress, $submissionBody);
+        $submissionBody = str_replace('{{phone}}', $phone, $submissionBody);
         $submissionBody = str_replace('{{email}}', $email, $submissionBody);
         $submissionBody = str_replace('{{message}}', $message, $submissionBody);
 
@@ -60,8 +64,10 @@ try {
         $confirmationContent .= quoted_printable_encode($confirmationBody) . "\r\n\r\n";
 
         // Store data in the database
-        $stmt = $dbh->prepare("INSERT INTO mailstorage (naam, email, bericht) VALUES (:naam, :email, :bericht)");
+        $stmt = $dbh->prepare("INSERT INTO mailstorage (naam, adres, telefoonnummer, email, bericht) VALUES (:naam, :adres, :telefoon, :email, :bericht)");
         $stmt->bindParam(':naam', $name);
+        $stmt->bindParam(':adres', $adress);
+        $stmt->bindParam(':telefoon', $phone);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':bericht', $message);
 

@@ -9,9 +9,25 @@ $(document).ready(function () {
 		const form = $('#contactForm');
 
 		if (form.length > 0) {
+			$.validator.setDefaults({
+				errorClass: 'help-block',
+				errorElement: 'div',
+				errorPlacement: function (error, element) {
+					error.insertAfter(element);
+				},
+				highlight: function (element) {
+					$(element).closest('.form-group').addClass('has-error');
+				},
+				unhighlight: function (element) {
+					$(element).closest('.form-group').removeClass('has-error');
+				},
+			});
+
 			form.validate({
 				rules: {
-					name: 'required',
+					name: {
+						required: true,
+					},
 					email: {
 						required: true,
 						email: true,
@@ -22,25 +38,15 @@ $(document).ready(function () {
 					},
 				},
 				messages: {
-					name: 'Please enter your name',
-					email: 'Please enter a valid email address',
-					message: 'Please enter a message',
-				},
-				errorPlacement: function (error, element) {
-					error.appendTo(element.closest('.form-group'));
-				},
-				highlight: function (element) {
-					$(element).closest('.form-group').addClass('has-error');
-				},
-				unhighlight: function (element) {
-					$(element).closest('.form-group').removeClass('has-error');
-				},
-				success: function (label) {
-					label.closest('.form-group').removeClass('has-error');
+					name: {
+						required: 'Vul uw naam in',
+					},
+					email: 'Voer een geldig e-mailadres in',
+					message: 'Voer een bericht in',
 				},
 				submitHandler: function (form) {
 					const submitButton = $('.submitting');
-					const waitText = 'Submitting...';
+					const waitText = 'Bezig met verzenden...';
 
 					$.ajax({
 						type: 'POST',
@@ -66,7 +72,7 @@ $(document).ready(function () {
 						},
 						error: function () {
 							$('#form-message-warning')
-								.html('Something went wrong. Please try again.')
+								.html('Er is iets misgegaan. Probeer het opnieuw.')
 								.fadeIn();
 							submitButton.css('display', 'none');
 							form.find(':submit').prop('disabled', false); // Enable submit button

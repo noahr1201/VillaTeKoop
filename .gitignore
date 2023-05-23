@@ -1,4 +1,6 @@
 .DS_Store
-db_config.php
 sample-form.php
 email.css
+
+/config/
+```
