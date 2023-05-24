@@ -88,6 +88,9 @@ try {
             header("Location: contact.html?error=Het opslaan van gegevens in de database is mislukt. Probeer het later opnieuw.");
             exit;
         }
+    } else {
+        header("Location: contact.html");
+        exit;
     }
 } catch (PDOException $e) {
     echo "<div class='alert alert-danger' role='alert'>Er is een fout opgetreden bij het verbinden met de database: " . $e->getMessage() . "</div>";
