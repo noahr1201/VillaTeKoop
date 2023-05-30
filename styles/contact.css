@@ -86,7 +86,7 @@ a, a:hover {
   letter-spacing: .2rem;
   text-transform: uppercase;
   border-radius: 30px !important;
-  background-color: #EAFAF1
+  background-color: #FAFAD2
 }
 .btn.btn-primary {
   border-radius: 30px;
@@ -95,7 +95,7 @@ a, a:hover {
   box-shadow: 0 15px 30px 0 rgba(239, 67, 57, 0.2);
 }
 .btn:hover {
-  background-color: #D5F5E3;
+  background-color: #D4AF37;
 }
 .btn:active, .btn:focus {
   outline: none;
@@ -197,4 +197,28 @@ label.error {
 .required-label::after {
   content: " *";
   color: red;
+}
+/*Footer*/
+.tekst1{grid-area: tekst1;}
+
+.tekst2{grid-area: tekst2;}
+
+.tekst3{grid-area: tekst3;}
+
+.logo1{grid-area: logo1;}
+
+.tekst4{grid-area: tekst4;}
+
+.tekst5{grid-area: tekst5;}
+
+.tekst6{grid-area: tekst6;}
+
+.tekst7{grid-area: tekst7;}
+
+.container1{
+  display:grid;
+  grid-template-areas:
+  'tekst1 tekst2 tekst3 logo1 tekst4 tekst5 tekst6'
+  'tekst7 tekst7 tekst7 tekst7 tekst7 tekst7 tekst7';
+  width: 100%;
 }

@@ -76,3 +76,27 @@ html, body{
   .bd-mode-toggle {
 	z-index: 1500;
   }
+
+  .tekst1{grid-area: tekst1;}
+
+  .tekst2{grid-area: tekst2;}
+  
+  .tekst3{grid-area: tekst3;}
+
+  .logo1{grid-area: logo1;}
+
+  .tekst4{grid-area: tekst4;}
+
+  .tekst5{grid-area: tekst5;}
+
+  .tekst6{grid-area: tekst6;}
+
+  .tekst7{grid-area: tekst7;}
+  
+  .container1{
+	  display:grid;
+	  grid-template-areas:
+	  'tekst1 tekst2 tekst3 logo1 tekst4 tekst5 tekst6'
+	  'tekst7 tekst7 tekst7 tekst7 tekst7 tekst7 tekst7';
+	  width: 100%;
+  }
