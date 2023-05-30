@@ -1,6 +1,8 @@
 .DS_Store
+
 sample-form.php
 email.css
 
 /config/
-```
+/.idea/
+/.vscode/
