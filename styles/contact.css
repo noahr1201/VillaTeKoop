@@ -86,6 +86,7 @@ a, a:hover {
   letter-spacing: .2rem;
   text-transform: uppercase;
   border-radius: 30px !important;
+  background-color: #EAFAF1
 }
 .btn.btn-primary {
   border-radius: 30px;
@@ -94,7 +95,7 @@ a, a:hover {
   box-shadow: 0 15px 30px 0 rgba(239, 67, 57, 0.2);
 }
 .btn:hover {
-  color: #fff;
+  background-color: #D5F5E3;
 }
 .btn:active, .btn:focus {
   outline: none;
