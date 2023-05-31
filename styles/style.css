@@ -97,12 +97,18 @@ html, body{
 
 .tekst6{grid-area: tekst6;}
 
-.tekst7{grid-area: tekst7;}
 
 .container1{
   display:grid;
   grid-template-areas:
-  'tekst1 tekst2 tekst3 logo1 tekst4 tekst5 tekst6'
-  'tekst7 tekst7 tekst7 tekst7 tekst7 tekst7 tekst7';
+  'tekst1 tekst2 tekst3 logo1 tekst4 tekst5 tekst6';
   width: 100%;
+}
+.test1 {
+	position: absolute;
+	top: 50%;
+	left: 20%;
+  }
+  .imageContainer:hover {
+	color: black;
 }

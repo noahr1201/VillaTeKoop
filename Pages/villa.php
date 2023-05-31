@@ -38,7 +38,7 @@
   }
   ?>
 
-  <nav class="navbar navbar-expand navbar-light" style="background-color: #F4F6F7;" aria-label="Second navbar example">
+  <nav class="navbar navbar-expand navbar-light fixed-top" style="background-color: #F4F6F7;" aria-label="Second navbar example">
     <div class="container">
       <a class="navbar-brand" href="../index.html">
         <img src="../assets/logo.png" class="img-fluid rounded" width="25%">
@@ -64,7 +64,7 @@
 
   <div id="error-message" class="alert alert-danger" style="display: none;"></div>
 
-  <main>
+  <main style="margin-top: 10%">
     <p class="text-center" style="padding: 20px; font-size: 120%;"></p>
     <div class="container">
       <div class="row">
