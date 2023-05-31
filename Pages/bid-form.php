@@ -9,6 +9,7 @@ try {
         $name = isset($_POST['volledigeNaam']) ? htmlspecialchars($_POST['volledigeNaam']) : '';
         $email = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
         $bidAmount = isset($_POST['bodBedrag']) ? htmlspecialchars($_POST['bodBedrag']) : '';
+        $villaId = isset($_POST['villaId']) ? htmlspecialchars($_POST['villaId']) : '';
 
         // Form validatie
         if (empty($name) || empty($email) || empty($bidAmount)) {
@@ -42,10 +43,11 @@ try {
             $bidContent .= "Bod Bedrag: $bidAmount\r\n";
 
             // Opslaan van gegevens in de database
-            $stmt = $dbh->prepare("INSERT INTO bidstorage (naam, email, bod) VALUES (:name, :email, :bidAmount)");
+            $stmt = $dbh->prepare("INSERT INTO bidstorage (naam, email, bod, villaid) VALUES (:name, :email, :bidAmount, :villaId)");
             $stmt->bindParam(':name', $name);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':bidAmount', $bidAmount);
+            $stmt->bindParam(':villaId', $villaId);
 
             if ($stmt->execute()) {
                 if (mail($email, $subject, $confirmationContent, $headers)) {

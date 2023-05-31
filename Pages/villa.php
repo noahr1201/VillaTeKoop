@@ -25,8 +25,13 @@
   $stmt = $dbh->prepare("SELECT * FROM Villa WHERE id = :id");
   $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
-  if ($stmt->execute()) {
+  // Retrieve bids associated with the villa
+  $bidStmt = $dbh->prepare("SELECT bod FROM bidstorage WHERE villaid = :id");
+  $bidStmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+  if ($stmt->execute() && $bidStmt->execute()) {
     $villa = $stmt->fetch(PDO::FETCH_ASSOC);
+    $bids = $bidStmt->fetchAll(PDO::FETCH_ASSOC);
   } else {
     echo "<div class='alert alert-danger' role='alert'>Error executing the query.</div>";
     exit(); // Terminate script execution after displaying the error message
@@ -91,7 +96,17 @@
           <div class="border-0 mb-4">
             <div class="card-body">
               <h5 class="card-title"><b>Bod</b></h5>
-              <p class="card-text">&euro; <?php echo number_format($villa['bod']); ?> ,-</p>
+              <?php
+              if (!empty($bids)) {
+                echo "<ol>";
+                foreach ($bids as $bid) {
+                  echo "<li>&euro; " . number_format($bid['bod'], 2, ',', '.') . ",-</li>";
+                }
+                echo "</ol>";
+              } else {
+                echo "<p>Er is nog niet geboden.</p>";
+              }
+              ?>
             </div>
           </div>
         </div>
@@ -112,8 +127,9 @@
               </div>
               <div class="form-group">
                 <label for="bodBedrag">Bodbedrag (in euro's)</label>
-                <input type="number" class="form-control" id="bodBedrag" name="bodBedrag" min="1000000" step="100000" placeholder="Voer bodbedrag in" required>
+                <input type="number" class="form-control" id="bodBedrag" name="bodBedrag" min="1000000" placeholder="Voer bodbedrag in" required>
               </div>
+              <input type="hidden" name="villaId" value="<?php echo $id; ?>">
               <button type="submit" class="btn btn-primary">Bod Indienen</button>
             </form>
           </div>
