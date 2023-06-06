@@ -1,6 +1,12 @@
 html, body{
 	font-family: Tahoma, sans-serif;
-	color: #626262;          
+	color: white;          
+}
+
+body{
+	background-image: url(../assets/bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .bd-placeholder-img {
@@ -104,11 +110,22 @@ html, body{
   'tekst1 tekst2 tekst3 logo1 tekst4 tekst5 tekst6';
   width: 100%;
 }
-.test1 {
-	position: absolute;
-	top: 50%;
-	left: 20%;
-  }
-  .imageContainer:hover {
-	color: black;
+.nav-item:hover{
+	text-shadow: 0 0 3px #D4AF37;
+}
+.navbar{
+	border-bottom: 1px dashed black;
+}
+.lead{
+	text-shadow: 0 0 3px black;
+}
+
+.heroText{
+	font-size: 120%;
+}
+
+footer{
+	background-image: url(../assets/footerimg.png);
+	background-repeat: no-repeat;
+	background-size: cover;
 }

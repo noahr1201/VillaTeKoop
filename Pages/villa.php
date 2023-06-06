@@ -38,7 +38,7 @@
   }
   ?>
 
-  <nav class="navbar navbar-expand navbar-light fixed-top" style="background-color: #F4F6F7;" aria-label="Second navbar example">
+  <nav class="navbar navbar-expand navbar-light fixed-top" style="bg-*" aria-label="Second navbar example">
     <div class="container">
       <a class="navbar-brand" href="../index.html">
         <img src="../assets/logo.png" class="img-fluid rounded" width="25%">
