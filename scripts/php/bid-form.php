@@ -1,5 +1,5 @@
 <?php
-include_once '../config/db_config.php';
+include_once '../../config/db_config.php';
 
 try {
     $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
@@ -69,8 +69,8 @@ try {
         header("Location: $redirectUrl");
         exit;
     } else {
-        // header("Location: ../index.html");
-        // exit;
+        header("Location: ../../index.html");
+        exit;
     }
 } catch (PDOException $e) {
     echo "<div class='alert alert-danger' role='alert'>Er is een fout opgetreden bij het verbinden met de database: " . $e->getMessage() . "</div>";

@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Villa4You - Luxe villa's in Nederland</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
@@ -98,6 +99,9 @@
               <h5 class="card-title"><b>Bod</b></h5>
               <?php
               if (!empty($bids)) {
+                // Sort the bids array in descending order
+                arsort($bids);
+
                 echo "<ol>";
                 foreach ($bids as $bid) {
                   echo "<li>&euro; " . number_format($bid['bod'], 2, ',', '.') . ",-</li>";
@@ -116,7 +120,7 @@
           </div>
           <div class="container">
             <h4>Plaats Uw Bod</h4>
-            <form method="post" action="bid-form.php">
+            <form method="post" action="../scripts/php/bid-form.php">
               <div class="form-group">
                 <label for="volledigeNaam">Volledige Naam</label>
                 <input type="text" class="form-control" id="volledigeNaam" name="volledigeNaam" placeholder="Voer uw volledige naam in" required>
@@ -134,6 +138,12 @@
             </form>
           </div>
         </div>
+        <div class="col-md-12">
+          <div class="border-0 mb-4">
+            <div class="card-body">
+              <div id='map' style='width: 1100px; height: 300px; margin-top: 20px'></div>
+            </div>
+          </div>
       </div>
     </div>
   </main>
@@ -146,7 +156,11 @@
     </div>
   </footer>
 
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+
   <script src="../scripts/errorMessage.js"></script>
+  <script src="../scripts/map.js"></script>
 </body>
 </html>

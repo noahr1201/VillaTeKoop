@@ -1,5 +1,5 @@
 <?php
-include_once '../config/db_config.php';
+include_once '../../config/db_config.php';
 
 try {
     $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
@@ -20,7 +20,7 @@ try {
         }
 
         if (isset($error)) {
-            header("Location: contact.html?error=" . urlencode($error));
+            header("Location: ../../pages/contact.html?error=" . urlencode($error));
             exit;
         }
 
@@ -54,7 +54,7 @@ try {
         // Confirmation
         $confirmationSubject = "Bevestiging van Contactformulier Inzending";
 
-        $confirmationBody = file_get_contents('../templates/confirmation.php');
+        $confirmationBody = file_get_contents('../../templates/confirmation.php');
 
         $confirmationBody = str_replace('{{name}}', $name, $confirmationBody);
 
@@ -74,22 +74,22 @@ try {
         if ($stmt->execute()) {
             if (mail($email, $confirmationSubject, $confirmationContent, $headers)) {
                 if (mail($to, $subject, $submissionContent, $headers)) {
-                    header("Location: contact.html?success=true");
+                    header("Location: ../../pages/contact.html?success=true");
                     exit;
                 } else {
-                    header("Location: contact.html?error=Het verzenden van het bericht is mislukt. Probeer het later opnieuw.");
+                    header("Location: ../../pages/contact.html?error=Het verzenden van het bericht is mislukt. Probeer het later opnieuw.");
                     exit;
                 }
             } else {
-                header("Location: contact.html?error=Het verzenden van de bevestigingsmail is mislukt. Probeer het later opnieuw.");
+                header("Location: ../../pages/contact.html?error=Het verzenden van de bevestigingsmail is mislukt. Probeer het later opnieuw.");
                 exit;
             }
         } else {
-            header("Location: contact.html?error=Het opslaan van gegevens in de database is mislukt. Probeer het later opnieuw.");
+            header("Location: ../../pages/contact.html?error=Het opslaan van gegevens in de database is mislukt. Probeer het later opnieuw.");
             exit;
         }
     } else {
-        header("Location: contact.html");
+        header("Location: ../../pages/contact.html");
         exit;
     }
 } catch (PDOException $e) {
