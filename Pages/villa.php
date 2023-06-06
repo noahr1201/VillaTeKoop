@@ -38,7 +38,7 @@
   }
   ?>
 
-  <nav class="navbar navbar-expand navbar-light fixed-top" style="bg-*" aria-label="Second navbar example">
+  <nav class="navbar navbar-expand navbar-light" style="bg-*" aria-label="Second navbar example">
     <div class="container">
       <a class="navbar-brand" href="../index.html">
         <img src="../assets/logo.png" class="img-fluid rounded" width="25%">
@@ -49,13 +49,13 @@
       <div class="collapse navbar-collapse" id="navbarsExample02">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" style="color: grey;" aria-current="page" href="../index.html">Home</a>
+            <a class="nav-link" style="color: lightgray;" aria-current="page" href="../index.html">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="color: #D4AF37" href="#">Villa</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: grey" href="contact.html">Contact</a>
+            <a class="nav-link" style="color: lightgray" href="contact.html">Contact</a>
           </li>
         </ul>
       </div>
