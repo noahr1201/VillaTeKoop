@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Villa4You - Luxe villa's in Nederland</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
-  <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
   <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
@@ -27,7 +26,7 @@
   $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
   // Retrieve bids associated with the villa
-  $bidStmt = $dbh->prepare("SELECT bod FROM bidstorage WHERE villaid = :id");
+  $bidStmt = $dbh->prepare("SELECT * FROM bidstorage WHERE villaid = :id");
   $bidStmt->bindParam(':id', $id, PDO::PARAM_INT);
 
   if ($stmt->execute() && $bidStmt->execute()) {
@@ -104,7 +103,7 @@
 
                 echo "<ol>";
                 foreach ($bids as $bid) {
-                  echo "<li>&euro; " . number_format($bid['bod'], 2, ',', '.') . ",-</li>";
+                  echo "<li><b>" . $bid['naam'] . "</b> &euro; " . number_format($bid['bod'], 2, ',', '.') . ",-</li>";
                 }
                 echo "</ol>";
               } else {
@@ -138,13 +137,6 @@
             </form>
           </div>
         </div>
-        <div class="col-md-12">
-          <div class="border-0 mb-4">
-            <div class="card-body">
-              <div id='map' style='width: 1100px; height: 300px; margin-top: 20px'></div>
-            </div>
-          </div>
-      </div>
     </div>
   </main>
 
@@ -158,9 +150,7 @@
 
   <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
-  <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
 
   <script src="../scripts/errorMessage.js"></script>
-  <script src="../scripts/map.js"></script>
 </body>
 </html>
